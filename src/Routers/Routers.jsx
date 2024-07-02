@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router
 } from 'react-router-dom';
 import {
+  Ab,
   AddNewCashWallet,
   AddNewDebtOwedByUs,
   AddNewFawryMachine,
@@ -38,7 +39,7 @@ const Routers = () => {
       <Router>
         <Header />
         <Routes>
-          <Route path="/dash/elfath/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/dash/elfath/login" element={<Login />} />
           <Route path="/dash/elfath/fawry-machine" element={<FawryMachine />} />
           <Route path="/dash/elfath/fawry-machine/add-fawry-machine" element={<AddNewFawryMachine />} />
@@ -56,13 +57,14 @@ const Routers = () => {
           <Route path="/dash/elfath/yellow-card/add-yellow-card" element={<AddNewYellowCard />} />
           <Route path="/dash/elfath/yellow-card/update-yellow-card/:id" element={<UpdateYellowCard />} />
           <Route path="/dash/elfath/yellow-card/details-yellow-card/:id" element={<DetailsYellowCard />} />
-          <Route path="/dash/elfath/our-debt" element={<OurDebt/>}/>
-          <Route path="/dash/elfath/our-debt/add-new-debt" element={<AddNewOurDebt/>}/>
-          <Route path="/dash/elfath/our-debt/update-debt/:id" element={<UpdateOurDebt/>}/>
-          <Route path="/dash/elfath/debt-owed-by-us" element={<Debt/>}/>
-          <Route path="/dash/elfath/debt-owed-by-us/add-new-debt-owed-by-us" element={<AddNewDebtOwedByUs/>}/>
-          <Route path="/dash/elfath/debt-owed-by-us/update-debt-owed-by-us/:id" element={<UpdateDebtOwedByUs/>}/>
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="/dash/elfath/our-debt" element={<OurDebt />} />
+          <Route path="/dash/elfath/our-debt/add-new-debt" element={<AddNewOurDebt />} />
+          <Route path="/dash/elfath/our-debt/update-debt/:id" element={<UpdateOurDebt />} />
+          <Route path="/dash/elfath/debt-owed-by-us" element={<Debt />} />
+          <Route path="/dash/elfath/debt-owed-by-us/add-new-debt-owed-by-us" element={<AddNewDebtOwedByUs />} />
+          <Route path="/dash/elfath/debt-owed-by-us/update-debt-owed-by-us/:id" element={<UpdateDebtOwedByUs />} />
+          <Route path='/dash/elfath/ab' element={<Ab />} />
+          <Route path='*' element={<ErrorPage />} />
         </Routes>
       </Router>
     </div>

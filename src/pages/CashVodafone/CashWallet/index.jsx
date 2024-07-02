@@ -1,32 +1,32 @@
-import { useState } from "react"
+import axios from "axios"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 const CashWallet = () => {
   const [loading, setLoading] = useState(false)
-  const cashVoda = [
+  const [wallet, setWallet] = useState('')
+  useEffect(() => {
+    setLoading(true);
+    axios?.get(`http://localhost:3000/wallet`)
+      .then((response) => {
+        setWallet(response?.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  }, []);
+  console.log("wallet", wallet);
+  const cash = [
     {
-      _id: 1,
+      _id: "1",
       name: "مكتب رقم 1",
-      number: '01011497266',
-      balance: '30000',
-      limitMonth: '100000'
-    },
-    {
-      _id: 2,
-      name: "مكتب رقم 2",
-      number: '01015787266',
-      balance: '2000',
-      limitMonth: '100000'
-    },
-    {
-      _id: 3,
-      name: "مكتب رقم 3",
-      number: '01034597266',
-      balance: '34000',
-      limitMonth: '100000'
-    },
-  ];
-
+      number: "01011497266",
+      balance: "30000",
+      limitMonth: "100000"
+    }
+  ]
   return (
     <div className="dashboard d-flex flex-row">
       {
@@ -55,7 +55,7 @@ const CashWallet = () => {
             </tr>
           </thead>
           <tbody>
-            {!loading && cashVoda?.map((item, index) => (
+            {!loading && cash?.map((item, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{item?.name}</td>
@@ -64,7 +64,7 @@ const CashWallet = () => {
                 <td>{item?.limitMonth} جنية</td>
                 <td>
                   <Link
-                    to={`/dash/elfath/cash-wallet/update-cash-wallet/${item._id}`}
+                    to={`/dash/elfath/cash-wallet/update-cash-wallet/${item.id}`}
                     state={{ item: item }}
                   >
                     <button className="btn btn-outline-success mx-2 px-4">تعديل</button>
